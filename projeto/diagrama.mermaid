@@ -1,0 +1,75 @@
+classDiagram
+    class ColecaoMultissensorial {
+        +String nome
+        +iniciar()
+        +encerrar()
+        +listarJogos()
+    }
+
+    class JogoMultissensorial {
+        <<abstract>>
+        +String titulo
+        +String descricao
+        +int duracaoMinutos
+        +iniciar()
+        +pausar()
+        +reiniciar()
+        +finalizar()
+    }
+
+    class JardimDasFlores {
+        +despertarFlor()
+        +gerarParticulas()
+    }
+
+    class OceanoInterativo {
+        +criarOndas()
+        +interagirComPeixes()
+    }
+
+    class CeuDasEstrelas {
+        +acenderEstrela()
+        +ativarConstelacao()
+    }
+
+    class ModuloSensorial {
+        <<abstract>>
+        +ativar()
+        +desativar()
+    }
+
+    class EstimuloVisual {
+        +alterarCores()
+        +controlarBrilho()
+        +gerarAnimacoes()
+    }
+
+    class EstimuloSonoro {
+        +reproduzirSom()
+        +ajustarVolume()
+        +trocarAmbiente()
+    }
+
+    class EstimuloTattil {
+        +detectarToque()
+        +responderInteracao()
+    }
+
+    class Usuario {
+        +String perfil
+        +interagir()
+    }
+
+    ColecaoMultissensorial "1" o-- "*" JogoMultissensorial
+
+    JogoMultissensorial <|-- JardimDasFlores
+    JogoMultissensorial <|-- OceanoInterativo
+    JogoMultissensorial <|-- CeuDasEstrelas
+
+    JogoMultissensorial "1" *-- "*" ModuloSensorial
+
+    ModuloSensorial <|-- EstimuloVisual
+    ModuloSensorial <|-- EstimuloSonoro
+    ModuloSensorial <|-- EstimuloTattil
+
+    Usuario --> JogoMultissensorial : interage
